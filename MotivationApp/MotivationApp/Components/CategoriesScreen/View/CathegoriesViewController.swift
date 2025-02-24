@@ -9,5 +9,15 @@ import UIKit
 
 class CathegoriesViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    private func setupUI() {
+        
+        title = "Categories"
+        view.backgroundColor = .white
+    }
     
 }
