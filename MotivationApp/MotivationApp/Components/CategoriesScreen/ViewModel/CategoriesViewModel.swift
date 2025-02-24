@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CathegoriesViewModel {
+class CategoriesViewModel {
     
     // Все доступные категории
     let allCategories = [
