@@ -21,7 +21,7 @@ class TapBarController: UITabBarController {
     private func setupTabs() {
        
         let post = createNav(title: "Post a Quote", image: "pencil.and.list.clipboard", vc: PostaQuoteViewController())
-        let home = createNav(title: "", image: "", vc: HomeViewController())
+        let home = createNav(title: "", image: "", vc: CategoriesViewController())
         let favorites = createNav(title: "Favorites", image: "bookmark", vc: FavoritesViewController())
         
         setViewControllers([post, home, favorites], animated: true)
