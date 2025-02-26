@@ -8,44 +8,43 @@
 import Foundation
 
 class CategoriesViewModel {
-    
-    // Все доступные категории
     let allCategories = [
         "age", "alone", "amazing", "anger",
         "architecture", "art", "attitude", "beauty",
         "best", "birthday"
     ]
     
-    // Выбранная категория (nil = все категории)
-    private(set) var selectedCathegory: String?
+    private(set) var selectedCategory: String?
+    var previouslySelectedIndex: Int? // 12. Добавляем свойство
     
-    // Обработка выбора категории
-    
-    func selectedCathegory(at index: Int) {
+    func categoryName(for index: Int) -> String {
         if index == 0 {
-            selectedCathegory = nil
-        }
-        else {
-            selectedCathegory = allCategories[index - 1]
-        }
-    }
-    // Получение названия категории для ячейки
-    
-    func cathegoryName(for index: Int) -> String {
-        if index == 0 {
-            return "All Cathegories"
+            return "All Categories"
         }
         return allCategories[index - 1].capitalized
     }
     
-    // Проверка, выбрана ли категория
-    
-    func isCathegorySelected(at index: Int) -> Bool {
+    func isCategorySelected(at index: Int) -> Bool {
         if index == 0 {
-            selectedCathegory == nil
+            return selectedCategory == nil
         }
-        else {
-            selectedCathegory == allCategories[index - 1]
+        return selectedCategory == allCategories[index - 1]
+    }
+    
+    func selectCategory(at index: Int) {
+        let newSelectedIndex = index == 0 ? nil : index
+        
+        if let previous = previouslySelectedIndex {
+            if previous == index {
+                previouslySelectedIndex = nil
+                selectedCategory = nil
+                return
+            }
         }
+        
+        previouslySelectedIndex = newSelectedIndex
+        selectedCategory = newSelectedIndex != nil ?
+            allCategories[index - 1] :
+            nil
     }
 }
